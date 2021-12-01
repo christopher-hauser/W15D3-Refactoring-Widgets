@@ -9,10 +9,10 @@ const Weather = () => {
   const [weather, setWeather] = useState(null)
   useEffect(()=>{
 
-    const pollWeather = () =>{
+    const pollWeather = async (location) =>{
       let url = 'http://api.openweathermap.org/data/2.5/weather?';
 
- 
+
       const apiKey = process.env.REACT_APP_WEATHER_API
       const params = {
         lat: location.coords.latitude,
@@ -29,7 +29,7 @@ const Weather = () => {
       else {
         alert("Check Weather API key!")
       }
-    
+
     }
 
       navigator.geolocation.getCurrentPosition(
@@ -37,10 +37,10 @@ const Weather = () => {
         (err) => console.log(err),
         { timeout: 10000 }
       );
-    
+
 
   }, [])
-  
+
     // const weather = this.state.weather;
     let content = <div className='loading'>loading weather...</div>;
 
@@ -62,7 +62,7 @@ const Weather = () => {
         </div>
       </section>
     )};
-  
+
 
 
 
